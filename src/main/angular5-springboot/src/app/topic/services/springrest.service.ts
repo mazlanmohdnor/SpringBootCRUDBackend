@@ -1,8 +1,9 @@
-import { Topic } from './../model/Topic';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Topic } from "./../model/Topic";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import "rxjs/add/operator/toPromise";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
@@ -23,25 +24,39 @@ export class SpringrestService {
     return null;
   }
 
-  saveUser(topic: Topic): void {
+  saveUser(topic: Topic) {
     console.log("Saving: ", topic);
-    this.http.post(this.apiUrl, topic)
-      .subscribe((data) => {
-      console.log(data);
-    },
-      err => {
-        console.log(err);
-      });
+
+    const promise = new Promise((resolve, reject) => {
+      this.http
+        .post(this.apiUrl, topic)
+        .toPromise()
+        .then(
+          data => {
+            console.log(data);
+            resolve();
+          },
+          err => {
+            console.log(err);
+          }
+        );
+    });
+    return promise;
   }
 
-  deleteUserById(id: string): void {
+  deleteUserById(id: string) {
     console.log("Deleting:", id);
-    this.http.delete(this.apiUrl + "/" + id)
-      .subscribe(data => {
-        console.log(data);
-      }, err => {
-        console.log(err);
-      });
+     const promise = new Promise((resolve, reject) => {
+       this.http.delete(this.apiUrl + "/" + id)
+         .toPromise()
+         .then(data => {
+           console.log(data);
+            resolve();
+         }, err => {
+           console.log(err);
+         });
+     });
+    return promise;
   }
 
   updateUser(tppic: Topic): Observable<Topic> {

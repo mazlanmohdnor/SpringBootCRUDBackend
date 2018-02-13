@@ -48,7 +48,8 @@ export class TopicComponentComponent implements OnInit {
   // remove Topic
   removeTopic(id) {
     // insert logic here
-    this.springrest.deleteUserById(id);
+    this.springrest.deleteUserById(id)
+      .then(() => this.getAllTopics());
   }
 
   // add topic
@@ -58,6 +59,10 @@ export class TopicComponentComponent implements OnInit {
       this.topicName,
       this.topicDescription
     );
-    this.springrest.saveUser(topicInput);
+    this.springrest.saveUser(topicInput).then((res) => {
+      console.log("Berjaya", res);
+      this.getAllTopics();
+    })
+      .catch((err) => console.log(err));
   }
 }

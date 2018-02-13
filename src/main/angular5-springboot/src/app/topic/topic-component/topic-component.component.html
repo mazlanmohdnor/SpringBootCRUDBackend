@@ -7,12 +7,13 @@
                 <input type="text" [(ngModel)]="topicCode" class="txt" name="item" placeholder="Topic code..">
                 <input type="text" [(ngModel)]="topicName" class="txt" name="item" placeholder="Topic Name..">
                 <input type="text" [(ngModel)]="topicDescription" class="txt" name="item" placeholder="Topic Description..">
-                <input type="submit" (click)="addTopic()" class="btn" value="Add Topic" [disabled]="!topicCode || !topicName || !topicDesc">
+                <input type="submit" (click)="addTopic()" class="btn" value="Add Topic" [disabled]="!topicCode || !topicName || !topicDescription">
+
             </form>
         </div>
 
         <div class="col-md-8">
-            <p class="header">Your Topic Registered (0)</p>
+            <p class="header">Your Topic Registered</p>
             <!-- <p class="wlist-item" *ngFor="let topic of topics; let i=index" (click)="remove(wish.key)">{{topic.id}}</p> -->
             <table class="table table-bordered table-hover">
                 <thead>
