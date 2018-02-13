@@ -1,0 +1,34 @@
+// @import "node_modules/bootstrap/scss/bootstrap";
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../assets/scss/_variables.scss";
+// @import "../../assets/scss/_variables.scss";
+input.txt {
+    border: 0;
+    padding: 1em;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+input.btn {
+    border: 0;
+    display: block;
+    padding: 1em 3em;
+    background: $lime;
+    color: #fff;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.wlist-item {
+    background: $lite;
+    padding: .5em;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header {
+    background: $litepink;
+    padding: 15px;
+    font-weight: bold;
+}

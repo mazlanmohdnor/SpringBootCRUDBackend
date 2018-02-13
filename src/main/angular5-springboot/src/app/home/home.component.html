@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="header">Add a wishlist</p>
+            <p>Use this form below to add a new wishlist.</p>
+            <form>
+                <input type="text" [(ngModel)]="wishtext" class="txt" name="item" placeholder="Wishlist..">
+                <input type="submit" (click)="addWish()" class="btn" value="Add Wish" [disabled]="!wishtext">
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header">Your wishlists ({{wishcount}})</p>
+            <p class="wlist-item" *ngFor="let wish of wishes; let i=index" (click)="remove(wish.key)">{{wish.item}}</p>
+        </div>
+    </div>
+
+</div>

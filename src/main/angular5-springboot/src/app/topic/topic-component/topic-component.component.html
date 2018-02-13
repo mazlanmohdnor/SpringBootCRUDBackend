@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p class="header">Add a Topic</p>
+            <p>Use this form below to add a new Topic.</p>
+            <form>
+                <input type="text" [(ngModel)]="topicCode" class="txt" name="item" placeholder="Topic code..">
+                <input type="text" [(ngModel)]="topicName" class="txt" name="item" placeholder="Topic Name..">
+                <input type="text" [(ngModel)]="topicDescription" class="txt" name="item" placeholder="Topic Description..">
+                <input type="submit" (click)="addTopic()" class="btn" value="Add Topic" [disabled]="!topicCode || !topicName || !topicDesc">
+            </form>
+        </div>
+
+        <div class="col-md-8">
+            <p class="header">Your Topic Registered (0)</p>
+            <!-- <p class="wlist-item" *ngFor="let topic of topics; let i=index" (click)="remove(wish.key)">{{topic.id}}</p> -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topic of topics; let i=index">
+                        <td>{{topic.name}}</td>
+                        <td>{{topic.description}}</td>
+                        <td>
+                            <button type="button" [routerLink]="['/view/topics', topic.id]" class="btn btn-primary">View</button>
+                            <button type="button" [routerLink]="['/edit/topics', topic.id]" class="btn btn-success">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="removeTopic(topic.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
