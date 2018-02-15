@@ -27,10 +27,12 @@
                     <tr *ngFor="let topic of topics; let i=index">
                         <td>{{topic.name}}</td>
                         <td>{{topic.description}}</td>
-                        <td>
+                        <td style="width:25%">
                             <button type="button" [routerLink]="['/view/topics', topic.id]" class="btn btn-primary">View</button>
                             <button type="button" [routerLink]="['/edit/topics', topic.id]" class="btn btn-success">Edit</button>
-                            <button type="button" class="btn btn-danger" (click)="removeTopic(topic.id)">Delete</button>
+                            <button type="button" class="btn btn-danger" (click)="delete(topic.id)">Delete</button>
+
+
                         </td>
                     </tr>
                 </tbody>

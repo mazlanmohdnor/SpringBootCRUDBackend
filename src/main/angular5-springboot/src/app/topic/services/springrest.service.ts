@@ -44,18 +44,22 @@ export class SpringrestService {
     return promise;
   }
 
-  deleteUserById(id: string) {
+  deleteTopic(id: string) {
     console.log("Deleting:", id);
-     const promise = new Promise((resolve, reject) => {
-       this.http.delete(this.apiUrl + "/" + id)
-         .toPromise()
-         .then(data => {
-           console.log(data);
+    const promise = new Promise((resolve, reject) => {
+      this.http
+        .delete(this.apiUrl + "/" + id)
+        .toPromise()
+        .then(
+          data => {
+            console.log(data);
             resolve();
-         }, err => {
-           console.log(err);
-         });
-     });
+          },
+          err => {
+            console.log(err);
+          }
+        );
+    });
     return promise;
   }
 

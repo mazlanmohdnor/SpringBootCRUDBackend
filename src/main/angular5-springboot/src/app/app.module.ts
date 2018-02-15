@@ -19,8 +19,15 @@ import { EditTopicComponent } from './topic/edit-topic/edit-topic.component';
 
 
 
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, TopicComponentComponent, EditTopicComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    TopicComponentComponent,
+    EditTopicComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,7 +35,7 @@ import { EditTopicComponent } from './topic/edit-topic/edit-topic.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

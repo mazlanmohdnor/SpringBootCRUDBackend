@@ -2,6 +2,7 @@ import { SpringrestService } from './../services/springrest.service';
 import { Component, OnInit } from '@angular/core';
 import { Topic } from '../model/Topic';
 
+
 @Component({
   selector: "app-topic-component",
   templateUrl: "./topic-component.component.html",
@@ -16,7 +17,9 @@ export class TopicComponentComponent implements OnInit {
   topicName: String;
   topicDescription: String;
 
-  constructor(private springrest: SpringrestService) {}
+  constructor(
+    private springrest: SpringrestService,
+  ) {}
 
   ngOnInit() {
     this.getAllTopics();
@@ -45,12 +48,6 @@ export class TopicComponentComponent implements OnInit {
   updateTopic(id) {
     // insert logic here
   }
-  // remove Topic
-  removeTopic(id) {
-    // insert logic here
-    this.springrest.deleteUserById(id)
-      .then(() => this.getAllTopics());
-  }
 
   // add topic
   addTopic() {
@@ -59,10 +56,23 @@ export class TopicComponentComponent implements OnInit {
       this.topicName,
       this.topicDescription
     );
-    this.springrest.saveUser(topicInput).then((res) => {
-      console.log("Berjaya", res);
-      this.getAllTopics();
-    })
-      .catch((err) => console.log(err));
+    this.springrest
+      .saveUser(topicInput)
+      .then(res => {
+        console.log("Berjaya", res);
+        this.getAllTopics();
+      })
+      .catch(err => console.log(err));
+  }
+
+  // delete topic
+  delete(id) {
+     this.springrest
+       .deleteTopic(id)
+       .then(res => {
+         console.log("Berjaya", res);
+         this.getAllTopics();
+       })
+       .catch(err => console.log(err));
   }
 }
