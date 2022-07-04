@@ -7,8 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from '@angular/common/http';
 
 // firebase
 import { AngularFireModule } from 'angularfire2';
@@ -35,7 +34,7 @@ import { EditTopicComponent } from './topic/edit-topic/edit-topic.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

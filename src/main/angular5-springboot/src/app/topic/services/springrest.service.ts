@@ -1,22 +1,23 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Topic } from "./../model/Topic";
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/toPromise";
-import { Observable } from "rxjs/Observable";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SpringrestService {
   private apiUrl = "http://localhost:8080/topics";
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   findAll() {
     console.log("Spring rest triggered");
     return this.http
-      .get(this.apiUrl)
-      .map(res => res.json())
-      .catch(error => Observable.throw(error.json().error || "Server error"));
+      .get<any>(this.apiUrl)
   }
 
   // not yet implemented
@@ -34,7 +35,7 @@ export class SpringrestService {
         .then(
           data => {
             console.log(data);
-            resolve();
+            resolve(data);
           },
           err => {
             console.log(err);
@@ -53,7 +54,7 @@ export class SpringrestService {
         .then(
           data => {
             console.log(data);
-            resolve();
+            resolve(data);
           },
           err => {
             console.log(err);

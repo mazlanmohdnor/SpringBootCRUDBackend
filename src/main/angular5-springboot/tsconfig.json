@@ -1,19 +1,42 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "removeComments": true,
     "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule":true,
+    "skipLibCheck": true,
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@environment/*": ["src/environments/*"],
+      "@directives/*": ["src/app/_directives/*"],
+      "@interfaces/*": ["src/app/_interfaces/*"],
+      "@pipes/*": ["src/app/_pipes/*"],
+      "@services/*": ["src/app/_services/*"],
+      "@shared/*": ["src/app/_shared/*"],
+      "@forms/*": ["src/app/forms/*"],
+      "@pages/*": ["src/app/pages/*"],
+      "@constants/*": ["src/app/_constants/*"],
+      "@utils/*": ["src/app/_utils/*"],
+      "@components/*": ["src/app/_components/*"],
+      "@modules/*": ["src/app/modules/*"],
+    },
+    "noImplicitOverride": true
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
